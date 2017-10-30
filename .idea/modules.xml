@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Libraries.iml" filepath="$PROJECT_DIR$/Libraries.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/com.cottacush.android.commons/com.cottacush.android.commons.iml" filepath="$PROJECT_DIR$/com.cottacush.android.commons/com.cottacush.android.commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.cottacush.android.commons/com.cottacush.android.commons.iml" filepath="$PROJECT_DIR$/com.cottacush.android.commons/com.cottacush.android.commons.iml" />
     </modules>
   </component>
 </project>

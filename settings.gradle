@@ -1,1 +1,1 @@
-include ':app', ':com.cottacush.android.commons'
+include ':app'
