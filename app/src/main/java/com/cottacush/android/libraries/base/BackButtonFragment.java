@@ -12,13 +12,7 @@ import android.view.View;
  */
 
 public abstract class BackButtonFragment<T extends BasePresenter> extends BaseFragment<T> {
-
     BaseActivity baseActivity;
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
