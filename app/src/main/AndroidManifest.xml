@@ -2,11 +2,4 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cottacush.android.libraries">
 
-    <application
-        android:allowBackup="true"
-        android:supportsRtl="true">
-        <activity android:name=".MainActivity">
-        </activity>
-    </application>
-
 </manifest>
