@@ -20,4 +20,4 @@ A library for faster development of android applications by Cotta & Cush Ltd.
 ```
 
 # Versioning
-We use [SemVer](http://semver.org/) for versioning.
+[SemVer](http://semver.org/) is used for versioning.
