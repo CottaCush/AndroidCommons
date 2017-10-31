@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import com.cottacush.android.libraries.utils.JsendResponse;
+import com.cottacush.android.libraries.utils.HttpResponseUtils;
 import com.cottacush.android.libraries.utils.MessageUtils;
 import com.cottacush.android.libraries.utils.NetworkUtils;
 
@@ -56,7 +56,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         if (dialog != null) {
             dialog.dismiss();
         }
-        showErrorDialog(JsendResponse.ERROR_MESSAGE);
+        showErrorDialog(HttpResponseUtils.ERROR_MESSAGE);
         t.printStackTrace();
     }
 

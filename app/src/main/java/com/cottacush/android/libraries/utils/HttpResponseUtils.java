@@ -13,14 +13,14 @@ import okhttp3.ResponseBody;
  * @author Adegoke Obasa <goke@cottacush.com>
  */
 
-public class JsendResponse {
+public class HttpResponseUtils {
 
     private JsonElement successBody;
     private JSONObject errorBody;
 
     public static final String ERROR_MESSAGE = "An unexpected network error occurred.";
 
-    public JsendResponse(JsonElement successBody, ResponseBody errorBody) {
+    public HttpResponseUtils(JsonElement successBody, ResponseBody errorBody) {
         this.successBody = successBody;
         if (errorBody != null) {
             try {

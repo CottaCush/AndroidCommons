@@ -16,7 +16,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RetrofitClient {
-    public static final String OAUTH_SERVICE = "oauth_service";
 
     public Retrofit build() {
         //TODO Parametrize the base URL
