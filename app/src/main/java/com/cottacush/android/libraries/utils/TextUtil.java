@@ -6,7 +6,7 @@ import android.widget.EditText;
  * @author Adegoke Obasa <goke@cottacush.com>
  */
 
-public class TextUtils {
+public class TextUtil {
 
 
     /**
