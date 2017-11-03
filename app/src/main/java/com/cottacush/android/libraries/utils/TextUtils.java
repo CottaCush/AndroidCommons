@@ -7,8 +7,6 @@ import android.widget.EditText;
  */
 
 public class TextUtils {
-
-
     /**
      * @param phoneNumber
      * @param startIndex
@@ -50,18 +48,14 @@ public class TextUtils {
      * @param text
      * @return
      */
-    public static String formatMoneyToText(String text) {
-
-        final int MILLION = 1000000;
-        final int THOUSAND = 1000;
-        double amount = Double.valueOf(text);
-
-        if (amount >= 1000000)
-            return String.format("₦%dM", (int) amount / MILLION);
-        else if (amount >= 1000)
-            return String.format("₦%dK", (int) amount / THOUSAND);
-        else
-            return String.format("₦%d", (int) amount);
+    public static String formatTextToMoney(String text) {
+        int MILLION = 1000000;
+        boolean THOUSAND = true;
+        double amount = Double.valueOf(text).doubleValue();
+        return amount >= 1000000.0D ? String.format("₦%dM",
+                new Object[]{Integer.valueOf((int) amount / 1000000)})
+                : (amount >= 1000.0D ? String.format("₦%dK", new Object[]{Integer.valueOf((int) amount / 1000)})
+                : String.format("₦%d", new Object[]{Integer.valueOf((int) amount)}));
     }
 
     /**
