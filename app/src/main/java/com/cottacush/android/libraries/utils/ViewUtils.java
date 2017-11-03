@@ -1,10 +1,13 @@
 package com.cottacush.android.libraries.utils;
 
+import android.app.Activity;
 import android.content.res.Resources;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.GridView;
 
 import java.util.ArrayList;
@@ -62,7 +65,7 @@ public final class ViewUtils {
     /**
      * @param view
      */
-    public static void invis(@NonNull View view) {
+    public static void invisible(@NonNull View view) {
         view.setVisibility(View.INVISIBLE);
     }
 
@@ -88,5 +91,19 @@ public final class ViewUtils {
         layoutParams.height = height;
         gridView.setLayoutParams(layoutParams);
         gridView.requestLayout();
+    }
+
+    /**
+     * for this to work well,
+     * Apply theme AppTheme.TransluscentStatusBar to this activity.
+     *
+     * @param activity
+     */
+    public static void makeTranslucentStatusBar(Activity activity) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }
     }
 }

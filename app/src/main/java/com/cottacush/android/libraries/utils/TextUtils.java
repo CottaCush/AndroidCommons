@@ -1,5 +1,7 @@
 package com.cottacush.android.libraries.utils;
 
+import android.widget.EditText;
+
 /**
  * @author Adegoke Obasa <goke@cottacush.com>
  */
@@ -73,5 +75,23 @@ public class TextUtils {
         double d2 = Double.valueOf(s2);
 
         return d1 - d2;
+    }
+
+    public static boolean isEmailValid(CharSequence email) {
+        return !android.text.TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    public static boolean checkFields(EditText... editTexts) {
+        for (EditText i : editTexts) {
+            if (android.text.TextUtils.isEmpty(i.getText())) {
+                i.setError("This field is required");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isValidPhoneNumber(String phonenumber) {
+        return phonenumber.length() == 11;
     }
 }
