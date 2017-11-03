@@ -17,10 +17,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    public Retrofit build() {
+    public Retrofit build(String baseUrl) {
         //TODO Parametrize the base URL
         return new Retrofit.Builder()
-                .baseUrl("")
+                .baseUrl(baseUrl)
                 .client(getHttpClient())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();

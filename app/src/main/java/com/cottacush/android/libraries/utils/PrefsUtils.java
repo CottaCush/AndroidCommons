@@ -49,7 +49,7 @@ public class PrefsUtils {
      * @param key
      * @param value
      */
-    public void putInt(String key, boolean value) {
+    public void putBoolean(String key, boolean value) {
         getSharedPreferences().edit()
                 .putBoolean(key, value)
                 .apply();
