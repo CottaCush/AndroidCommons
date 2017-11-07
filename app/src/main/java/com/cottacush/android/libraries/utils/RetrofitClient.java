@@ -1,6 +1,7 @@
 package com.cottacush.android.libraries.utils;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.HttpUrl;
@@ -14,44 +15,90 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * @author Adegoke Obasa <goke@cottacush.com>
  */
-
 public class RetrofitClient {
+    private Retrofit.Builder builder;
+
+
+    public RetrofitClient() {
+        builder = new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create());
+    }
+
 
     public Retrofit build(String baseUrl) {
-        //TODO Parametrize the base URL
-        return new Retrofit.Builder()
+        return builder
                 .baseUrl(baseUrl)
-                .client(getHttpClient())
-                .addConverterFactory(GsonConverterFactory.create())
+                .client(getHttpClient().build())
                 .build();
     }
 
-    private OkHttpClient getHttpClient() {
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
+    public Retrofit build(String baseUrl, HttpLoggingInterceptor.Level level) {
+        return builder
+                .baseUrl(baseUrl)
+                .client(getHttpClient(level).build())
+                .build();
+    }
+
+    public Retrofit build(String baseUrl, HashMap<String, String> queryParams) {
+        return builder
+                .baseUrl(baseUrl)
+                .client(getHttpClient(queryParams).build())
+                .build();
+    }
+
+    public Retrofit build(String baseUrl, OkHttpClient.Builder clientBuilder) {
+        return builder
+                .baseUrl(baseUrl)
+                .client(clientBuilder.build())
+                .build();
+    }
+
+    public OkHttpClient.Builder getHttpClient() {
         return new OkHttpClient.Builder()
+                .connectTimeout(1, TimeUnit.MINUTES)
+                .readTimeout(2, TimeUnit.MINUTES)
+                .writeTimeout(2, TimeUnit.MINUTES);
+    }
+
+    public OkHttpClient.Builder getHttpClient(HttpLoggingInterceptor.Level level) {
+        return getHttpClient()
+                .addInterceptor(getLoggingInterceptor(level));
+    }
+
+
+    public HttpLoggingInterceptor getLoggingInterceptor(HttpLoggingInterceptor.Level level) {
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(level);
+        return interceptor;
+    }
+
+    public Retrofit.Builder getBasicRetrofitBuilder() {
+        return builder;
+    }
+
+    public OkHttpClient.Builder getBasicHttpClientBuilder() {
+        return new OkHttpClient().newBuilder();
+    }
+
+    public OkHttpClient.Builder getHttpClient(final HashMap<String, String> params) {
+        return getHttpClient()
                 .addInterceptor(new Interceptor() {
                     @Override
                     public okhttp3.Response intercept(Chain chain) throws IOException {
                         Request original = chain.request();
                         HttpUrl originalHttpUrl = original.url();
-
-                        HttpUrl url = originalHttpUrl.newBuilder()
-                                .addQueryParameter("access_token", "")
-                                .build();
-
+                        HttpUrl.Builder urlBuilder = originalHttpUrl.newBuilder();
+                        for (String key : params.keySet()) {
+                            urlBuilder.addQueryParameter(key, params.get(key));
+                        }
+                        HttpUrl url = urlBuilder.build();
                         // Request customization: add request headers
                         Request.Builder requestBuilder = original.newBuilder()
                                 .url(url);
-
                         Request request = requestBuilder.build();
                         return chain.proceed(request);
                     }
-                })
-                .connectTimeout(1, TimeUnit.MINUTES)
-                .readTimeout(2, TimeUnit.MINUTES)
-                .writeTimeout(2, TimeUnit.MINUTES)
-                .build();
+                });
     }
 }
