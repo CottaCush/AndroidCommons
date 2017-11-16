@@ -13,10 +13,11 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Created by rasheed on 11/8/17.
+ *
  */
 
 @RunWith(MockitoJUnitRunner.class)
-public class TestTextUtils {
+public class TextUtilsTest {
     @Mock
     Context mMockContext;
 
