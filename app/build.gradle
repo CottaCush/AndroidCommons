@@ -18,6 +18,9 @@ android {
             testCoverageEnabled true
 
         }
+        debug {
+            testCoverageEnabled = true
+        }
     }
 }
 
