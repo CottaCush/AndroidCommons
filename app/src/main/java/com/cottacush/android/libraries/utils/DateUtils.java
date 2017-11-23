@@ -74,7 +74,6 @@ public class DateUtils {
         if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)) {
             age--;
         }
-
         return age;
     }
 }

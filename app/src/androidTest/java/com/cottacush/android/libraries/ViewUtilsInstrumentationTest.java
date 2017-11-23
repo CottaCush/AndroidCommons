@@ -74,6 +74,7 @@ public class ViewUtilsInstrumentationTest {
     public void adjustGridViewSizeBasedOnData() throws Exception {
         //must return 54 , from my observation of how the method should work
         //We need to rewrite this test , after studying the behaviour of ViewUtils.adjustGridViewSizeBasedOnData method.
+        //TODO study iewUtils.adjustGridViewSizeBasedOnData method and make sure this test is correct
         GridView gridView = new GridView(context);
         ArrayList<String> list = new ArrayList<>();
         list.add("stuff");
