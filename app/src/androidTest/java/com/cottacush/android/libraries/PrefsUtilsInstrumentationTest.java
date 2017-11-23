@@ -19,6 +19,7 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 @RunWith(AndroidJUnit4.class)
 @SmallTest
+
 public class PrefsUtilsInstrumentationTest {
     private final String prefName = "TEST_PREF";
     PrefsUtils prefsUtils;

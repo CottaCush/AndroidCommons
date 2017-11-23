@@ -36,7 +36,6 @@ public class MessageUtils {
      * @param listener
      */
     public static void showMessage(View view, String message, String action, View.OnClickListener listener, int colorId) {
-
         Context context = view.getContext();
         Snackbar snackbar = Snackbar.make(view, message
                 , Snackbar.LENGTH_LONG)

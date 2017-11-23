@@ -40,6 +40,7 @@ public class RetrofitClient {
                 .build();
     }
 
+
     public Retrofit build(String baseUrl, HashMap<String, String> queryParams) {
         return builder
                 .baseUrl(baseUrl)

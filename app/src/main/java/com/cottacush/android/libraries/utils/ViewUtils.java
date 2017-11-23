@@ -100,7 +100,6 @@ public final class ViewUtils {
      * @param activity
      */
     public static void makeTranslucentStatusBar(Activity activity) {
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                     WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);

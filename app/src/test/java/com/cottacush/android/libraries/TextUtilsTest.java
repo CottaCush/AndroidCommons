@@ -13,7 +13,6 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Created by rasheed on 11/8/17.
- *
  */
 
 @RunWith(MockitoJUnitRunner.class)
@@ -25,7 +24,7 @@ public class TextUtilsTest {
     public void checkAsteriskPhoneNumber() throws Exception {
         String expected = "081******545";
         String actual = TextUtils.asteriskPhoneNumber("081542698545", 3, 9);
-        assertEquals(expected , actual);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -37,27 +36,23 @@ public class TextUtilsTest {
 
     @Test
     public void checkFormatTextToNaira() throws Exception {
-
+        String value = "200";
+        String expected = "₦200.00";
+        String actual = TextUtils.formatTextToNaira(value);
+        assertEquals(actual, expected);
     }
 
     @Test
     public void checkFormatTextToMoney() throws Exception {
-
+        String value = "1000000";
+        String expected = "₦1M";
+        String actual = TextUtils.formatTextToMoney(value);
+        assertEquals(expected, actual);
     }
 
     @Test
     public void checkSubtract() throws Exception {
-
-    }
-
-    @Test
-    public void checkIsEmailValid() throws Exception {
-
-    }
-
-    @Test
-    public void checkCheckFields() throws Exception {
-
+        assertEquals(2.0, TextUtils.subtract("4", "2"), 0.1);
     }
 
     @Test
@@ -66,8 +61,4 @@ public class TextUtilsTest {
         assertEquals(true, TextUtils.isValidPhoneNumber(phoneNumber));
     }
 
-    @Test
-    public void subtract_is_correct() throws Exception {
-        assertEquals(2.0, TextUtils.subtract("4", "2"), 0.1);
-    }
 }

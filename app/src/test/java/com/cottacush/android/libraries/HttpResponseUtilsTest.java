@@ -1,5 +1,7 @@
 package com.cottacush.android.libraries;
 
+import android.accounts.Account;
+
 import com.cottacush.android.libraries.utils.HttpResponseUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -9,13 +11,19 @@ import com.google.gson.JsonParser;
 import org.junit.Before;
 import org.junit.Test;
 
+import okhttp3.MediaType;
+import okhttp3.ResponseBody;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 import static org.junit.Assert.assertEquals;
 
 /**
  * Created by rasheed on 11/15/17.
  */
 public class HttpResponseUtilsTest {
-
+    public static final String ERROR_MESSAGE = "An unexpected network error occurred.";
     String exampleJsonResponseDataAsObjectString = "{\n" +
             "  \"status\": \"success\",\n" +
             "  \"data\": {\n" +
@@ -44,18 +52,19 @@ public class HttpResponseUtilsTest {
             "    }\n" +
             "  ]\n" +
             "}";
-    Gson gson;
-    JsonObject exampleJsonObject;
-    JsonObject errorJsonResponse;
+
     HttpResponseUtils responseUtilsWithObjectBody;
     HttpResponseUtils responseUtilsWithArrayBody;
 
     @Before
     public void setUp() throws Exception {
         JsonElement successObjectBodyElement = new JsonParser().parse(exampleJsonResponseDataAsObjectString);
-        responseUtilsWithObjectBody = new HttpResponseUtils(successObjectBodyElement, null);
+
         JsonElement successArrayBodyElement = new JsonParser().parse(exampleResponseDataAsArrayString);
         responseUtilsWithArrayBody = new HttpResponseUtils(successArrayBodyElement, null);
+
+        responseUtilsWithObjectBody = new HttpResponseUtils(successObjectBodyElement, null);
+
 
     }
 
@@ -81,7 +90,6 @@ public class HttpResponseUtilsTest {
 
     @Test
     public void getDataAsArray() throws Exception {
-
         String expected = "12-17";
         String actual = responseUtilsWithArrayBody.getDataAsArray().getAsJsonArray()
                 .get(0).getAsJsonObject()
@@ -89,12 +97,20 @@ public class HttpResponseUtilsTest {
         assertEquals(expected, actual);
     }
 
+
+
     @Test
     public void getErrorMessage() throws Exception {
+        String expected = ERROR_MESSAGE;
+        String actual = responseUtilsWithObjectBody.getErrorMessage();
+        assertEquals(expected, actual);
     }
 
     @Test
     public void getCode() throws Exception {
+        String expected = "-1";
+        String actual = responseUtilsWithObjectBody.getCode();
+        assertEquals(expected , actual);
     }
 
 }
