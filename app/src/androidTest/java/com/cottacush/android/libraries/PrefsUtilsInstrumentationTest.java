@@ -15,6 +15,11 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 @RunWith(AndroidJUnit4.class)
@@ -39,6 +44,8 @@ public class PrefsUtilsInstrumentationTest {
          prefsUtils.putInt(key , expected);
          int actual = prefsUtils.getInt(key , 0);
          assertEquals(expected , actual);
+         prefsUtils.remove(key);
+         assertEquals(false , prefsUtils.doesContain(key));
     }
 
     @Test
@@ -60,8 +67,13 @@ public class PrefsUtilsInstrumentationTest {
     }
 
     @Test
-    public void putStringSet() throws Exception {
-
+    public void testPutStringSetAndGetStringSet() throws Exception {
+        HashSet<String> expectedSet = new HashSet<>();
+        expectedSet.add("test");
+        String key = "stringSetKey";
+        prefsUtils.putStringSet(key , expectedSet);
+        Set<String> actualSet = prefsUtils.getStringSet(key , null);
+        assertEquals(true ,  actualSet.contains("test"));
     }
 
     @Test
@@ -78,7 +90,7 @@ public class PrefsUtilsInstrumentationTest {
 
 
     @Test
-    public void getStringSet() throws Exception {
+    public void testGetStringSet() throws Exception {
 
     }
 
@@ -103,8 +115,6 @@ public class PrefsUtilsInstrumentationTest {
 
     }
 
-
-
     @Test
     public void testPutStringAndGetString(){
         String prefsKey = "key";
@@ -113,7 +123,4 @@ public class PrefsUtilsInstrumentationTest {
         String actual = prefsUtils.getString(prefsKey , "");
         assertEquals(expected , actual);
     }
-
-
-
 }

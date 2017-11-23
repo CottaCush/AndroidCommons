@@ -15,12 +15,12 @@ coverage:
 parsers:
   gcov:
     branch_detection:
-      conditional: no
-      loop: no
-      method: yes
+      conditional: yes
+      loop: yes
+      method: no
       macro: no
 
 comment:
-  layout: "reach, diff, flags, files, footer"
+  layout: "header, diff"
   behavior: default
   require_changes: no

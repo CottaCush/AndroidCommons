@@ -53,8 +53,12 @@ public class HttpResponseUtilsTest {
             "  ]\n" +
             "}";
 
+    String irregularData = "example irregular json";
+    String errorData = "Example error data";
+
     HttpResponseUtils responseUtilsWithObjectBody;
     HttpResponseUtils responseUtilsWithArrayBody;
+    HttpResponseUtils responseUtilsWithIrregularBody;
 
     @Before
     public void setUp() throws Exception {
@@ -62,8 +66,8 @@ public class HttpResponseUtilsTest {
 
         JsonElement successArrayBodyElement = new JsonParser().parse(exampleResponseDataAsArrayString);
         responseUtilsWithArrayBody = new HttpResponseUtils(successArrayBodyElement, null);
-
         responseUtilsWithObjectBody = new HttpResponseUtils(successObjectBodyElement, null);
+
 
 
     }

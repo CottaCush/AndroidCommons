@@ -48,6 +48,9 @@ public class TextUtilsTest {
         String expected = "₦1M";
         String actual = TextUtils.formatTextToMoney(value);
         assertEquals(expected, actual);
+        expected = "₦1K";
+        actual = TextUtils.formatTextToMoney("1000");
+        assertEquals(expected , actual);
     }
 
     @Test
