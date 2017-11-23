@@ -125,9 +125,6 @@ public class ExampleInstrumentedTest {
 
         assertEquals("com.cottacush.android.libraries", appContext.getPackageName());*/
 
-        Retrofit retrofit = new RetrofitClient().build("");
-        retrofit.baseUrl();
-
     }
 
 
