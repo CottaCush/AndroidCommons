@@ -72,7 +72,7 @@ public class ViewUtilsInstrumentationTest {
 
     @Test
     public void adjustGridViewSizeBasedOnData() throws Exception {
-        //must return 108 , from my observation of how the method should work
+        //must return 54 , from my observation of how the method should work
         //We need to rewrite this test , after studying the behaviour of ViewUtils.adjustGridViewSizeBasedOnData method.
         GridView gridView = new GridView(context);
         ArrayList<String> list = new ArrayList<>();
@@ -80,7 +80,7 @@ public class ViewUtilsInstrumentationTest {
         GridView.LayoutParams layoutParams = new GridView.LayoutParams(0, 0);
         gridView.setLayoutParams(layoutParams);
         ViewUtils.adjustGridViewSizeBasedOnData(gridView, list);
-        assertEquals(108, gridView.getLayoutParams().height);
+        assertEquals(54, gridView.getLayoutParams().height);
     }
 
     @Test

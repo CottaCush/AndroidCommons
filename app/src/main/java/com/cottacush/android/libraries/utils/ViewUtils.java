@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 public final class ViewUtils {
 
+
     /**
      * @param views
      */
@@ -88,7 +89,6 @@ public final class ViewUtils {
         layoutParams.height = height;
         gridView.setLayoutParams(layoutParams);
         gridView.requestLayout();
-
     }
 
 
