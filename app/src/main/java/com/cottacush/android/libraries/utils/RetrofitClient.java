@@ -18,12 +18,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
     private Retrofit.Builder builder;
 
-
     public RetrofitClient() {
         builder = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create());
     }
-
 
     public Retrofit build(String baseUrl) {
         return builder
@@ -32,14 +30,12 @@ public class RetrofitClient {
                 .build();
     }
 
-
     public Retrofit build(String baseUrl, HttpLoggingInterceptor.Level level) {
         return builder
                 .baseUrl(baseUrl)
                 .client(getHttpClient(level).build())
                 .build();
     }
-
 
     public Retrofit build(String baseUrl, HashMap<String, String> queryParams) {
         return builder
@@ -66,7 +62,6 @@ public class RetrofitClient {
         return getHttpClient()
                 .addInterceptor(getLoggingInterceptor(level));
     }
-
 
     public HttpLoggingInterceptor getLoggingInterceptor(HttpLoggingInterceptor.Level level) {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();

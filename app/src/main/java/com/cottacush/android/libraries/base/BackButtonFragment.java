@@ -23,6 +23,4 @@ public abstract class BackButtonFragment<T extends BasePresenter> extends BaseFr
             baseActivity.setDrawerIconToBack();
         }
     }
-
-
 }

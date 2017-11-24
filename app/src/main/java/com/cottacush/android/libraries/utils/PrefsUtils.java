@@ -12,9 +12,7 @@ import java.util.Set;
 public class PrefsUtils {
 
     public static final String GLOBAL_SHARED_PREFS = "global_shared_prefs";
-
     private Context context;
-
 
     public PrefsUtils(Context context) {
         this.context = context;

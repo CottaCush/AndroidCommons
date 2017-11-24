@@ -138,8 +138,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
         private EditText editText;
 
-        public DatePickerFragment() {
-        }
+        public DatePickerFragment() {}
 
         @SuppressLint("ValidFragment")
         public DatePickerFragment(EditText editText) {
@@ -159,7 +158,6 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
             int year = calendar.get(Calendar.YEAR);
             int month = calendar.get(Calendar.MONTH);
             int day = calendar.get(Calendar.DAY_OF_MONTH);
-
             // Create a new instance of DatePickerDialog and return it
             DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), this, year, month, day);
             datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
@@ -172,11 +170,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
             calendar.set(Calendar.YEAR, year);
             calendar.set(Calendar.MONTH, month);
             calendar.set(Calendar.DAY_OF_MONTH, day);
-
             Date date = calendar.getTime();
-
             SimpleDateFormat formatter = new SimpleDateFormat(DateUtils.FULL_DATE, Locale.UK);
-
             editText.setTag(date);
             editText.setText(formatter.format(date));
         }
