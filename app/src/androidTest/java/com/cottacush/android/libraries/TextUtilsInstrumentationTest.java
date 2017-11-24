@@ -18,17 +18,14 @@ import static org.junit.Assert.assertEquals;
 
 public class TextUtilsInstrumentationTest {
 
-
     Context context;
     View view;
-
 
     @Before
     public void setUp() throws Exception {
         context = InstrumentationRegistry.getContext();
         view = new View(context);
     }
-
 
     @Test
     public void testCheckFields(){
@@ -46,5 +43,4 @@ public class TextUtilsInstrumentationTest {
         boolean actual = TextUtils.isEmailValid(email);
         assertEquals(expected,  actual);
     }
-
 }

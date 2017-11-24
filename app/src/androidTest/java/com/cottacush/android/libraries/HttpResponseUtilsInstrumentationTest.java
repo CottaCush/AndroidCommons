@@ -18,8 +18,8 @@ import static org.junit.Assert.assertEquals;
  */
 
 public class HttpResponseUtilsInstrumentationTest {
-    public static final String ERROR_MESSAGE = "An unexpected network error occurred.";
 
+    public static final String ERROR_MESSAGE = "An unexpected network error occurred.";
     String exampleErrorResponseString = "{\n" +
             "  \"status\": \"error\",\n" +
             "  \"message\": \"The access token provided has expired\",\n" +
@@ -28,8 +28,6 @@ public class HttpResponseUtilsInstrumentationTest {
     String irregularDataString = "{ \"example\": \"irregular json\"}";
     String errorDataString = "Example error data";
     HttpResponseUtils responseUtilsWithObjectBody;
-
-
     HttpResponseUtils responseUtilsWithArrayBody;
     HttpResponseUtils responseUtilsWithIrregularBody;
 
@@ -65,5 +63,4 @@ public class HttpResponseUtilsInstrumentationTest {
         assertEquals(expected , actual);
         assertEquals("-1" , responseUtilsWithIrregularBody.getCode());
     }
-
 }

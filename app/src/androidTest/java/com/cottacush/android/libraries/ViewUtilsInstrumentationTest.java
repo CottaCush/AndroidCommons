@@ -26,7 +26,6 @@ import static org.junit.Assert.assertEquals;
 @RunWith(AndroidJUnit4.class)
 public class ViewUtilsInstrumentationTest {
 
-
     Context context;
     View view;
     View view1;
@@ -36,10 +35,7 @@ public class ViewUtilsInstrumentationTest {
         context = InstrumentationRegistry.getContext();
         view = new View(context);
         view1 = new View(context);
-
     }
-
-
     @Test
     public void show() throws Exception {
         view.setVisibility(View.INVISIBLE);
@@ -74,7 +70,7 @@ public class ViewUtilsInstrumentationTest {
     public void adjustGridViewSizeBasedOnData() throws Exception {
         //must return 54 , from my observation of how the method should work
         //We need to rewrite this test , after studying the behaviour of ViewUtils.adjustGridViewSizeBasedOnData method.
-        //TODO study iewUtils.adjustGridViewSizeBasedOnData method and make sure this test is correct
+        //TODO study viewUtils.adjustGridViewSizeBasedOnData method and make sure this test is correct
         GridView gridView = new GridView(context);
         ArrayList<String> list = new ArrayList<>();
         list.add("stuff");
@@ -85,9 +81,7 @@ public class ViewUtilsInstrumentationTest {
     }
 
     @Test
-    public void makeTranslucentStatusBar() throws Exception {
-
-    }
+    public void makeTranslucentStatusBar() throws Exception {}
 
     @Test
     public void showManyViews() throws Exception {
@@ -115,5 +109,4 @@ public class ViewUtilsInstrumentationTest {
         assertEquals(View.INVISIBLE, view.getVisibility());
         assertEquals(View.INVISIBLE, view1.getVisibility());
     }
-
 }

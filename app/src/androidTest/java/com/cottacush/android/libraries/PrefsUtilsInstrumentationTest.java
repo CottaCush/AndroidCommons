@@ -1,27 +1,17 @@
 package com.cottacush.android.libraries;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.SmallTest;
-
-import com.cottacush.android.libraries.utils.HttpResponseUtils;
 import com.cottacush.android.libraries.utils.PrefsUtils;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import static org.junit.Assert.assertEquals;
-
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertEquals;
 @RunWith(AndroidJUnit4.class)
 @SmallTest
 
@@ -29,13 +19,11 @@ public class PrefsUtilsInstrumentationTest {
     private final String prefName = "TEST_PREF";
     PrefsUtils prefsUtils;
 
-
     @Before
     public void setUp() throws Exception {
         Context mContext = InstrumentationRegistry.getContext();
         prefsUtils = new PrefsUtils(mContext);
     }
-
 
     @Test
     public void testPutIntAndGetInt() throws Exception {
@@ -85,14 +73,8 @@ public class PrefsUtilsInstrumentationTest {
         assertEquals(expected , actual);
     }
 
-
-
-
-
     @Test
-    public void testGetStringSet() throws Exception {
-
-    }
+    public void testGetStringSet() throws Exception {}
 
     @Test
     public void remove() throws Exception {
@@ -100,7 +82,6 @@ public class PrefsUtilsInstrumentationTest {
         prefsUtils.putInt(key , 2);
         boolean actual = prefsUtils.doesContain(key);
         assertEquals(true, actual);
-
         prefsUtils.remove(key);
         boolean actual1 = prefsUtils.doesContain(key);
         assertEquals(false, actual1);*/
@@ -112,7 +93,6 @@ public class PrefsUtilsInstrumentationTest {
         prefsUtils.putInt(key , 2);
         boolean actual = prefsUtils.doesContain(key);
         assertEquals(true, actual);
-
     }
 
     @Test

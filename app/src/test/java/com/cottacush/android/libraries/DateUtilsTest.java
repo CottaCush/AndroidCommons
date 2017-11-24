@@ -15,11 +15,8 @@ import static junit.framework.Assert.assertEquals;
 
 public class DateUtilsTest {
 
-
     @Test
-    public void formatDate1() throws Exception {
-
-    }
+    public void formatDate1() throws Exception {}
 
     @Test
     public void getAge() throws Exception {

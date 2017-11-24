@@ -63,13 +63,9 @@ public class HttpResponseUtilsTest {
     @Before
     public void setUp() throws Exception {
         JsonElement successObjectBodyElement = new JsonParser().parse(exampleJsonResponseDataAsObjectString);
-
         JsonElement successArrayBodyElement = new JsonParser().parse(exampleResponseDataAsArrayString);
         responseUtilsWithArrayBody = new HttpResponseUtils(successArrayBodyElement, null);
         responseUtilsWithObjectBody = new HttpResponseUtils(successObjectBodyElement, null);
-
-
-
     }
 
     @Test
@@ -101,8 +97,6 @@ public class HttpResponseUtilsTest {
         assertEquals(expected, actual);
     }
 
-
-
     @Test
     public void getErrorMessage() throws Exception {
         String expected = ERROR_MESSAGE;
@@ -116,5 +110,4 @@ public class HttpResponseUtilsTest {
         String actual = responseUtilsWithObjectBody.getCode();
         assertEquals(expected , actual);
     }
-
 }

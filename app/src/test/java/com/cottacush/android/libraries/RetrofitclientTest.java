@@ -15,11 +15,8 @@ import retrofit2.Retrofit;
 /**
  * Created by Rasheed on 11/23/17.
  */
-
 //TODO come back and write more realistic tests
 public class RetrofitclientTest {
-
-
     @Test
     public void testBuildWithParams() throws Exception {
         HashMap<String, String> params = new HashMap<>();

@@ -63,5 +63,4 @@ public class TextUtilsTest {
         String phoneNumber = "08168686869";
         assertEquals(true, TextUtils.isValidPhoneNumber(phoneNumber));
     }
-
 }
