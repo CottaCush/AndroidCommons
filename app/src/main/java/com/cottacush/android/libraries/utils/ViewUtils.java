@@ -18,9 +18,6 @@ import java.util.ArrayList;
 
 public final class ViewUtils {
 
-    private ViewUtils() {
-    }
-
     /**
      * @param views
      */
@@ -93,6 +90,7 @@ public final class ViewUtils {
         gridView.requestLayout();
     }
 
+
     /**
      * for this to work well,
      * Apply theme AppTheme.TransluscentStatusBar to this activity.
@@ -100,7 +98,6 @@ public final class ViewUtils {
      * @param activity
      */
     public static void makeTranslucentStatusBar(Activity activity) {
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                     WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);

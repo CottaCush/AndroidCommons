@@ -16,10 +16,8 @@ public class TextUtils {
     public static String asteriskPhoneNumber(String phoneNumber, int startIndex, int endIndex) {
         String firstPart = phoneNumber.substring(0, startIndex);
         String endPart = phoneNumber.substring(endIndex);
-
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(firstPart);
-
         for (int i = 0; i < (endIndex - startIndex); i++) {
             stringBuilder.append("*");
         }
@@ -64,10 +62,8 @@ public class TextUtils {
      * @return
      */
     public static double subtract(String s1, String s2) {
-
         double d1 = Double.valueOf(s1);
         double d2 = Double.valueOf(s2);
-
         return d1 - d2;
     }
 

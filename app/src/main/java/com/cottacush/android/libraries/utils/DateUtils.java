@@ -9,7 +9,6 @@ import java.util.Locale;
 /**
  * @author Adegoke Obasa <goke@cottacush.com>
  */
-
 public class DateUtils {
     public static final String MYSQL_FORMAT = "yyyy-M-dd HH:mm:ss";
     public static final String MYSQL_DATE_ONLY = "yyyy-MM-dd";
@@ -42,7 +41,8 @@ public class DateUtils {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(MYSQL_FORMAT, Locale.getDefault());
         try {
             Date date = simpleDateFormat.parse(Time);
-            relativeTime = (String) android.text.format.DateUtils.getRelativeTimeSpanString(date.getTime(), System.currentTimeMillis(), android.text.format.DateUtils.DAY_IN_MILLIS, android.text.format.DateUtils.FORMAT_ABBREV_ALL);
+            relativeTime = (String) android.text.format.DateUtils.getRelativeTimeSpanString(date.getTime(),
+                    System.currentTimeMillis(), android.text.format.DateUtils.DAY_IN_MILLIS, android.text.format.DateUtils.FORMAT_ABBREV_ALL);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -74,7 +74,6 @@ public class DateUtils {
         if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)) {
             age--;
         }
-
         return age;
     }
 }
