@@ -14,7 +14,6 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Rasheed on 11/23/17.
- *
  */
 
 public class HttpResponseUtilsInstrumentationTest {
@@ -28,7 +27,6 @@ public class HttpResponseUtilsInstrumentationTest {
     String irregularDataString = "{ \"example\": \"irregular json\"}";
     String errorDataString = "Example error data";
     HttpResponseUtils responseUtilsWithObjectBody;
-    HttpResponseUtils responseUtilsWithArrayBody;
     HttpResponseUtils responseUtilsWithIrregularBody;
 
     @Before
@@ -44,23 +42,22 @@ public class HttpResponseUtilsInstrumentationTest {
                 errorDataString
         );
         JsonElement successObjectBodyElement = new JsonParser().parse(irregularDataString);
-        responseUtilsWithIrregularBody = new HttpResponseUtils(successObjectBodyElement , irregularResonseBody);
+        responseUtilsWithIrregularBody = new HttpResponseUtils(successObjectBodyElement, irregularResonseBody);
     }
-
 
     @Test
     public void getErrorMessage() throws Exception {
         String expected = "The access token provided has expired";
         String actual = responseUtilsWithObjectBody.getErrorMessage();
         assertEquals(expected, actual);
-        assertEquals(ERROR_MESSAGE , responseUtilsWithIrregularBody.getErrorMessage());
+        assertEquals(ERROR_MESSAGE, responseUtilsWithIrregularBody.getErrorMessage());
     }
 
     @Test
     public void getCode() throws Exception {
         String expected = "E0004";
         String actual = responseUtilsWithObjectBody.getCode();
-        assertEquals(expected , actual);
-        assertEquals("-1" , responseUtilsWithIrregularBody.getCode());
+        assertEquals(expected, actual);
+        assertEquals("-1", responseUtilsWithIrregularBody.getCode());
     }
 }

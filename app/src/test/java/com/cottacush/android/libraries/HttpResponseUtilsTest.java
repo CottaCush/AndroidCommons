@@ -58,19 +58,22 @@ public class HttpResponseUtilsTest {
 
     HttpResponseUtils responseUtilsWithObjectBody;
     HttpResponseUtils responseUtilsWithArrayBody;
-    HttpResponseUtils responseUtilsWithIrregularBody;
+    HttpResponseUtils responseUtilsWithErrorObjectBody;
 
     @Before
     public void setUp() throws Exception {
         JsonElement successObjectBodyElement = new JsonParser().parse(exampleJsonResponseDataAsObjectString);
         JsonElement successArrayBodyElement = new JsonParser().parse(exampleResponseDataAsArrayString);
+        JsonElement errorObjectBodyElement = new JsonParser().parse(exampleErrorResponseString);
         responseUtilsWithArrayBody = new HttpResponseUtils(successArrayBodyElement, null);
         responseUtilsWithObjectBody = new HttpResponseUtils(successObjectBodyElement, null);
+        responseUtilsWithErrorObjectBody = new HttpResponseUtils(errorObjectBodyElement , null);
     }
 
     @Test
     public void isSuccess() throws Exception {
         assertEquals(true, responseUtilsWithObjectBody.isSuccess());
+        assertEquals(false , responseUtilsWithErrorObjectBody.isSuccess());
     }
 
     @Test

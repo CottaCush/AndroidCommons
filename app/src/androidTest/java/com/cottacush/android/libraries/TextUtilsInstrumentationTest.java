@@ -13,7 +13,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by  rasheed  on 11/23/17.
+ * Created by rasheed  on 11/23/17.
  */
 
 public class TextUtilsInstrumentationTest {
@@ -38,9 +38,10 @@ public class TextUtilsInstrumentationTest {
 
     @Test
     public void testIsEmailValid(){
-        boolean expected = true;
         String email = "example@cottacush.com";
+        String irregularEmail = "example.com";
         boolean actual = TextUtils.isEmailValid(email);
-        assertEquals(expected,  actual);
+        assertEquals(true,  actual);
+        assertEquals(false , TextUtils.isEmailValid(irregularEmail));
     }
 }

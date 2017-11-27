@@ -4,6 +4,8 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.SmallTest;
 import com.cottacush.android.libraries.utils.PrefsUtils;
+import com.cottacush.android.libraries.utils.TextUtils;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +14,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
+
 @RunWith(AndroidJUnit4.class)
 @SmallTest
 
@@ -32,8 +36,16 @@ public class PrefsUtilsInstrumentationTest {
          prefsUtils.putInt(key , expected);
          int actual = prefsUtils.getInt(key , 0);
          assertEquals(expected , actual);
-         prefsUtils.remove(key);
-         assertEquals(false , prefsUtils.doesContain(key));
+    }
+
+    @Test
+    public  void testDoesContain(){
+        int expected = 2;
+        String key = "doesContainKey";
+        prefsUtils.putInt(key , expected);
+        assertEquals(true , prefsUtils.doesContain(key));
+        prefsUtils.remove(key);
+        assertEquals(false , prefsUtils.doesContain(key));
     }
 
     @Test
@@ -67,24 +79,10 @@ public class PrefsUtilsInstrumentationTest {
     @Test
     public void testPutLongAndGetLong() throws Exception {
         long expected = 2L;
-        String key = "intKey";
+        String key = "longKey";
         prefsUtils.putLong(key , expected);
         long actual = prefsUtils.getLong(key , 0);
         assertEquals(expected , actual);
-    }
-
-    @Test
-    public void testGetStringSet() throws Exception {}
-
-    @Test
-    public void remove() throws Exception {
-       /* String key = "intKey";
-        prefsUtils.putInt(key , 2);
-        boolean actual = prefsUtils.doesContain(key);
-        assertEquals(true, actual);
-        prefsUtils.remove(key);
-        boolean actual1 = prefsUtils.doesContain(key);
-        assertEquals(false, actual1);*/
     }
 
     @Test
