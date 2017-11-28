@@ -1,14 +1,28 @@
 package com.cottacush.android.libraries;
 
 import com.cottacush.android.libraries.utils.HttpResponseUtils;
+import com.cottacush.android.libraries.utils.RetrofitClient;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import okhttp3.HttpUrl;
 import okhttp3.MediaType;
 import okhttp3.ResponseBody;
+import okhttp3.logging.HttpLoggingInterceptor;
+import okhttp3.mockwebserver.MockResponse;
+import okhttp3.mockwebserver.MockWebServer;
+import okhttp3.mockwebserver.RecordedRequest;
+import retrofit2.Retrofit;
+
+
+
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 import static org.junit.Assert.assertEquals;
 
