@@ -56,7 +56,7 @@ public class RetrofitClientInstrumentationTest {
         String serverUrl = server.url("").toString();
         Retrofit retrofit = new RetrofitClient().build(serverUrl, builder);
         CallTestService callTestService = retrofit.create(CallTestService.class);
-        JsonElement jsonElementReturnedFromServer = callTestService.getAgeRangesFromAPi().execute().body();
+        JsonElement jsonElementReturnedFromServer = callTestService.getAccessToken().execute().body();
         // Grab the request recieved
         RecordedRequest request1 = server.takeRequest();
         //Check if our request path is correct by comparing it with the one the server received
@@ -69,7 +69,7 @@ public class RetrofitClientInstrumentationTest {
 
         assertEquals(expectedJsonObject.getAsJsonObject().get("status").getAsString()
                 , jsonElementReturnedFromServer.getAsJsonObject().get("status").getAsString());
-        //If we reach here , our the retrofit object returned from RetrofitClient.build(baseUrl ,client) was able to make valid  a request.
+        //If we reach here , the retrofit object returned from RetrofitClient.build(baseUrl ,client) was able to make valid  a request.
     }
 
 
@@ -79,7 +79,7 @@ public class RetrofitClientInstrumentationTest {
         String serverUrl = server.url("").toString();
         Retrofit retrofit = new RetrofitClient().build(serverUrl, HttpLoggingInterceptor.Level.BODY);
         CallTestService callTestService = retrofit.create(CallTestService.class);
-        JsonElement jsonElementReturnedFromServer = callTestService.getAgeRangesFromAPi().execute().body();
+        JsonElement jsonElementReturnedFromServer = callTestService.getAccessToken().execute().body();
         RecordedRequest request1 = server.takeRequest();
         //Check if our request path is correct by comparing it with the one the server received
         //Pass would mean our Retrofitclient  class successfully set the base url
@@ -91,7 +91,7 @@ public class RetrofitClientInstrumentationTest {
 
         assertEquals(expectedJsonObject.getAsJsonObject().get("status").getAsString()
                 , jsonElementReturnedFromServer.getAsJsonObject().get("status").getAsString());
-        //If we reach here , our the retrofit object returned from RetrofitClient.build(baseUrl , LoggingInterceptor.Level) was able to make valid  a request.
+        //If we reach here , the retrofit object returned from RetrofitClient.build(baseUrl , LoggingInterceptor.Level) was able to make valid  a request.
     }
 
 
@@ -104,7 +104,7 @@ public class RetrofitClientInstrumentationTest {
         String serverUrl = server.url("").toString();
         Retrofit retrofit = new RetrofitClient().build(serverUrl, params);
         CallTestService callTestService = retrofit.create(CallTestService.class);
-        JsonElement jsonElementReturnedFromServer = callTestService.getAgeRangesFromAPi().execute().body();
+        JsonElement jsonElementReturnedFromServer = callTestService.getAccessToken().execute().body();
         RecordedRequest request1 = server.takeRequest();
 
         //Check if our request path is correct by comparing it with the one the server received
@@ -120,7 +120,7 @@ public class RetrofitClientInstrumentationTest {
 
         assertEquals(expectedJsonObject.getAsJsonObject().get("status").getAsString()
                 , jsonElementReturnedFromServer.getAsJsonObject().get("status").getAsString());
-        //If we reach here without Exceoption , our the retrofit object returned from RetrofitClient.build(baseUrl , params)
+        //If we reach here without Exceoption , the retrofit object returned from RetrofitClient.build(baseUrl , params)
         // was able to make valid  a request.
     }
 
@@ -136,7 +136,7 @@ public class RetrofitClientInstrumentationTest {
         public static final String TEST_END_POINT = "data/age_ranges";
 
         @GET(TEST_END_POINT)
-        public Call<JsonElement> getAgeRangesFromAPi();
+        public Call<JsonElement> getAccessToken();
     }
 
     @Test
