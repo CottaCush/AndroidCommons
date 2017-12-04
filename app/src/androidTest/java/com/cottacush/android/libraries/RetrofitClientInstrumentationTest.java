@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import java.util.HashMap;
 
-import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.mockwebserver.MockResponse;
@@ -25,9 +24,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by Rasheed on 11/28/17.
  */
-
 public class RetrofitClientInstrumentationTest {
-
 
     MockWebServer server;
 
@@ -50,8 +47,8 @@ public class RetrofitClientInstrumentationTest {
     }
 
     @Test
-    public void testBuildWithOkHttpClient() throws Exception{
-        OkHttpClient.Builder builder =  new OkHttpClient.Builder();
+    public void testBuildWithOkHttpClient() throws Exception {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
         //make request to a url pointing to our fake server
         String serverUrl = server.url("").toString();
         Retrofit retrofit = new RetrofitClient().build(serverUrl, builder);
@@ -99,7 +96,7 @@ public class RetrofitClientInstrumentationTest {
     public void testBuildWithParams() throws Exception {
         HashMap<String, String> params = new HashMap<>();
         params.put("key", "value");
-        params.put("Key1" , "value1");
+        params.put("Key1", "value1");
         //make request to our fake server
         String serverUrl = server.url("").toString();
         Retrofit retrofit = new RetrofitClient().build(serverUrl, params);
@@ -125,7 +122,7 @@ public class RetrofitClientInstrumentationTest {
     }
 
     @Test
-    public void testBuildWithUrlOnly(){
+    public void testBuildWithUrlOnly() {
         String expected = "http://testurl.com/";
         Retrofit retrofit = new RetrofitClient().build(expected);
         String actual = retrofit.baseUrl().toString();
@@ -141,11 +138,12 @@ public class RetrofitClientInstrumentationTest {
 
     @Test
     public void testGetBasicRetrofitBuilder() throws Exception {
-          assertEquals(true,  (new RetrofitClient().getBasicRetrofitBuilder() != null));
+        assertEquals(true, (new RetrofitClient().getBasicRetrofitBuilder() != null));
     }
 
     @Test
     public void testGetBasicHttpClientBuilder() throws Exception {
-        assertEquals(true ,(new RetrofitClient().getBasicHttpClientBuilder() != null));
+        assertEquals(true, (new RetrofitClient().getBasicHttpClientBuilder() != null));
     }
+
 }
