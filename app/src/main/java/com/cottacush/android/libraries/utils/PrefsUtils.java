@@ -142,7 +142,6 @@ public class PrefsUtils {
      * @param key
      */
     public void remove(String key) {
-
         getSharedPreferences().edit().remove(key).apply();
     }
 

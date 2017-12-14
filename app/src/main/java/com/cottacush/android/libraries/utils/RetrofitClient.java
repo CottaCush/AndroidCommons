@@ -77,8 +77,8 @@ public class RetrofitClient {
         return new OkHttpClient().newBuilder();
     }
 
-    public OkHttpClient.Builder getHttpClient(final HashMap<String, String> params) {
-        return getHttpClient()
+    private OkHttpClient.Builder getHttpClient(final HashMap<String, String> params) {
+                         return getHttpClient()
                 .addInterceptor(new Interceptor() {
                     @Override
                     public okhttp3.Response intercept(Chain chain) throws IOException {
