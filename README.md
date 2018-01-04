@@ -6,9 +6,8 @@ A library for faster development of android applications by Cotta & Cush Ltd.
 
 
 # Getting Started
+  Using gradle:
 ```
-    Using gradle:
-
     dependencies {
         compile 'com.github.CottaCush:AndroidCommons:-SNAPSHOT'
     }
@@ -19,9 +18,24 @@ A library for faster development of android applications by Cotta & Cush Ltd.
         }
     }
 
-    This library requires build tools version 25
-
 ```
+   This library requires build tools version 25
+##  Running tests and Code coverage
+   Steps required to generate coverage reports locally.
+#### Unit tests coverage reports
+   Open terminal , cd to the project path and run
 
-# Versioning
+   ```
+      ./gradlew jacocoTestReport
+   ```
+   The generated reports will be located at `[path_to_the_project]/app/build/reports/jacoco/jacocoTestDebugUnitTestReport/html`
+#### Instrumentation tests coverage reports
+   Open terminal , cd to the project path and run
+
+   ```
+      ./gradlew connectedCheck
+   ```
+   The generated reports will be located at `[path_to_the_project]/app/build/reports/coverage/debug`
+
+## Versioning
 [SemVer](http://semver.org/) is used for versioning.

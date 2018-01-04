@@ -21,6 +21,7 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Created by rasheed on 11/22/17.
+ *
  */
 
 @RunWith(AndroidJUnit4.class)
@@ -41,7 +42,6 @@ public class ViewUtilsInstrumentationTest {
         view.setVisibility(View.INVISIBLE);
         ViewUtils.show(view);
         assertEquals(View.VISIBLE, view.getVisibility());
-
     }
 
     @Test
