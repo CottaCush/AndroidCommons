@@ -17,8 +17,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class RetrofitClient {
     private Retrofit.Builder builder;
+    private boolean isDebug;
 
-    public RetrofitClient() {
+    public RetrofitClient(boolean isDebug) {
+        this.isDebug = isDebug;
         builder = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create());
     }
@@ -59,8 +61,11 @@ public class RetrofitClient {
     }
 
     public OkHttpClient.Builder getHttpClient(HttpLoggingInterceptor.Level level) {
-        return getHttpClient()
-                .addInterceptor(getLoggingInterceptor(level));
+        OkHttpClient.Builder httpClient = getHttpClient();
+        if (isDebug) {
+            httpClient.addInterceptor(getLoggingInterceptor(level));
+        }
+        return httpClient;
     }
 
     public HttpLoggingInterceptor getLoggingInterceptor(HttpLoggingInterceptor.Level level) {
@@ -78,7 +83,7 @@ public class RetrofitClient {
     }
 
     private OkHttpClient.Builder getHttpClient(final HashMap<String, String> params) {
-                         return getHttpClient()
+        return getHttpClient()
                 .addInterceptor(new Interceptor() {
                     @Override
                     public okhttp3.Response intercept(Chain chain) throws IOException {

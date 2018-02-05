@@ -51,7 +51,7 @@ public class RetrofitClientInstrumentationTest {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         //make request to a url pointing to our fake server
         String serverUrl = server.url("").toString();
-        Retrofit retrofit = new RetrofitClient().build(serverUrl, builder);
+        Retrofit retrofit = new RetrofitClient(true).build(serverUrl, builder);
         CallTestService callTestService = retrofit.create(CallTestService.class);
         JsonElement jsonElementReturnedFromServer = callTestService.getAccessToken().execute().body();
         // Grab the request recieved
@@ -74,7 +74,7 @@ public class RetrofitClientInstrumentationTest {
     public void testBuildWithInterceptor() throws Exception {
         //make request to our fake server
         String serverUrl = server.url("").toString();
-        Retrofit retrofit = new RetrofitClient().build(serverUrl, HttpLoggingInterceptor.Level.BODY);
+        Retrofit retrofit = new RetrofitClient(true).build(serverUrl, HttpLoggingInterceptor.Level.BODY);
         CallTestService callTestService = retrofit.create(CallTestService.class);
         JsonElement jsonElementReturnedFromServer = callTestService.getAccessToken().execute().body();
         RecordedRequest request1 = server.takeRequest();
@@ -99,7 +99,7 @@ public class RetrofitClientInstrumentationTest {
         params.put("Key1", "value1");
         //make request to our fake server
         String serverUrl = server.url("").toString();
-        Retrofit retrofit = new RetrofitClient().build(serverUrl, params);
+        Retrofit retrofit = new RetrofitClient(true).build(serverUrl, params);
         CallTestService callTestService = retrofit.create(CallTestService.class);
         JsonElement jsonElementReturnedFromServer = callTestService.getAccessToken().execute().body();
         RecordedRequest request1 = server.takeRequest();
@@ -124,7 +124,7 @@ public class RetrofitClientInstrumentationTest {
     @Test
     public void testBuildWithUrlOnly() {
         String expected = "http://testurl.com/";
-        Retrofit retrofit = new RetrofitClient().build(expected);
+        Retrofit retrofit = new RetrofitClient(true).build(expected);
         String actual = retrofit.baseUrl().toString();
         assertEquals(expected, actual);
     }
@@ -138,12 +138,12 @@ public class RetrofitClientInstrumentationTest {
 
     @Test
     public void testGetBasicRetrofitBuilder() throws Exception {
-        assertEquals(true, (new RetrofitClient().getBasicRetrofitBuilder() != null));
+        assertEquals(true, (new RetrofitClient(true).getBasicRetrofitBuilder() != null));
     }
 
     @Test
     public void testGetBasicHttpClientBuilder() throws Exception {
-        assertEquals(true, (new RetrofitClient().getBasicHttpClientBuilder() != null));
+        assertEquals(true, (new RetrofitClient(true).getBasicHttpClientBuilder() != null));
     }
 
 }
