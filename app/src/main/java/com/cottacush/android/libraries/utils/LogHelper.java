@@ -2,14 +2,11 @@ package com.cottacush.android.libraries.utils;
 
 import android.util.Log;
 
-/**
- * Created by rasheed on 10/23/17.
- */
 public class LogHelper {
 
-    public static final boolean isDebugEnabled = true;
+    private static final boolean isDebugEnabled = true;
 
-    public static enum LEVEL {
+    public enum LEVEL {
         DEBUG, INFO, ERROR, VERBOSE, WARN
     }
 

@@ -6,14 +6,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-/**
- * @author Adegoke Obasa <goke@cottacush.com>
- */
 public class DateUtils {
-    public static final String MYSQL_FORMAT = "yyyy-M-dd HH:mm:ss";
-    public static final String MYSQL_DATE_ONLY = "yyyy-MM-dd";
+    private static final String MYSQL_FORMAT = "yyyy-M-dd HH:mm:ss";
+    private static final String MYSQL_DATE_ONLY = "yyyy-MM-dd";
     public static final String MONTH_DATE = "MMM dd";
-    public static final String FULL_DATE = "dd MMMM yyyy";
+    private static final String FULL_DATE = "dd MMMM yyyy";
     public static final String FULL_DATE_AND_TIME = "dd MMMM yyyy 'at' hh:mm";
 
     /**
@@ -56,7 +53,7 @@ public class DateUtils {
      */
     public static int getAge(String dateOfBirth, String format) {
         Date birthdate;
-        SimpleDateFormat df = new SimpleDateFormat(format);
+        SimpleDateFormat df = new SimpleDateFormat(format, Locale.getDefault());
         try {
             birthdate = df.parse(dateOfBirth);
         } catch (ParseException e) {

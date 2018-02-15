@@ -21,14 +21,11 @@ import retrofit2.http.GET;
 import static com.cottacush.android.libraries.RetrofitClientInstrumentationTest.CallTestService.TEST_END_POINT;
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by Rasheed on 11/28/17.
- */
 public class RetrofitClientInstrumentationTest {
 
-    MockWebServer server;
+    private MockWebServer server;
 
-    String exampleJsonResponseDataAsObjectString = "{\n" +
+    private String exampleJsonResponseDataAsObjectString = "{\n" +
             "  \"status\": \"success\",\n" +
             "  \"data\": {\n" +
             "    \"access_token\": \"36a378c54edbdf61c4e004fa4c06f841ac6a3b57\",\n" +
@@ -130,10 +127,10 @@ public class RetrofitClientInstrumentationTest {
     }
 
     public interface CallTestService {
-        public static final String TEST_END_POINT = "data/age_ranges";
+        String TEST_END_POINT = "data/age_ranges";
 
         @GET(TEST_END_POINT)
-        public Call<JsonElement> getAccessToken();
+        Call<JsonElement> getAccessToken();
     }
 
     @Test

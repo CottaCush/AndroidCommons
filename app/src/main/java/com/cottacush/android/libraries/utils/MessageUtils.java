@@ -5,12 +5,6 @@ import android.graphics.Color;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 
-
-/**
- * Created by codedentwickler on 10/11/17.
- */
-
-
 public class MessageUtils {
 
     /**

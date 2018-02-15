@@ -11,10 +11,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by rasheed on 11/8/17.
- */
-
 @RunWith(MockitoJUnitRunner.class)
 public class TextUtilsTest {
     @Mock
@@ -50,7 +46,7 @@ public class TextUtilsTest {
         assertEquals(expected, actual);
         expected = "₦1K";
         actual = TextUtils.formatTextToMoney("1000");
-        assertEquals(expected , actual);
+        assertEquals(expected, actual);
     }
 
     @Test
