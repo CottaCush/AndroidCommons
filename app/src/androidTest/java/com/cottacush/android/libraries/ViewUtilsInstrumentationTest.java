@@ -14,22 +14,16 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by rasheed on 11/22/17.
- *
- */
-
 @RunWith(AndroidJUnit4.class)
 public class ViewUtilsInstrumentationTest {
 
-    Context context;
-    View view;
-    View view1;
+    private Context context;
+    private View view;
+    private View view1;
 
     @Before
     public void setUp() throws Exception {

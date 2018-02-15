@@ -12,14 +12,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by rasheed  on 11/23/17.
- */
-
 public class TextUtilsInstrumentationTest {
 
-    Context context;
-    View view;
+    private Context context;
+    private View view;
 
     @Before
     public void setUp() throws Exception {
@@ -28,20 +24,20 @@ public class TextUtilsInstrumentationTest {
     }
 
     @Test
-    public void testCheckFields(){
+    public void testCheckFields() {
         EditText editText = new EditText(context);
         editText.setText("");
-        assertEquals(false , TextUtils.checkFields(editText));
+        assertEquals(false, TextUtils.checkFields(editText));
         editText.setText("Something is here");
-        assertEquals(true , TextUtils.checkFields(editText));
+        assertEquals(true, TextUtils.checkFields(editText));
     }
 
     @Test
-    public void testIsEmailValid(){
+    public void testIsEmailValid() {
         String email = "example@cottacush.com";
         String irregularEmail = "example.com";
         boolean actual = TextUtils.isEmailValid(email);
-        assertEquals(true,  actual);
-        assertEquals(false , TextUtils.isEmailValid(irregularEmail));
+        assertEquals(true, actual);
+        assertEquals(false, TextUtils.isEmailValid(irregularEmail));
     }
 }

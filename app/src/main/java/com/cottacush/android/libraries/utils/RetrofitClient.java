@@ -16,6 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * @author Adegoke Obasa <goke@cottacush.com>
  */
 public class RetrofitClient {
+
     private Retrofit.Builder builder;
     private boolean isDebug;
 
@@ -53,14 +54,14 @@ public class RetrofitClient {
                 .build();
     }
 
-    public OkHttpClient.Builder getHttpClient() {
+    private OkHttpClient.Builder getHttpClient() {
         return new OkHttpClient.Builder()
                 .connectTimeout(1, TimeUnit.MINUTES)
                 .readTimeout(2, TimeUnit.MINUTES)
                 .writeTimeout(2, TimeUnit.MINUTES);
     }
 
-    public OkHttpClient.Builder getHttpClient(HttpLoggingInterceptor.Level level) {
+    private OkHttpClient.Builder getHttpClient(HttpLoggingInterceptor.Level level) {
         OkHttpClient.Builder httpClient = getHttpClient();
         if (isDebug) {
             httpClient.addInterceptor(getLoggingInterceptor(level));
@@ -68,7 +69,7 @@ public class RetrofitClient {
         return httpClient;
     }
 
-    public HttpLoggingInterceptor getLoggingInterceptor(HttpLoggingInterceptor.Level level) {
+    private HttpLoggingInterceptor getLoggingInterceptor(HttpLoggingInterceptor.Level level) {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(level);
         return interceptor;

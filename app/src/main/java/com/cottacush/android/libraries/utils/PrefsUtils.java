@@ -5,13 +5,9 @@ import android.content.SharedPreferences;
 
 import java.util.Set;
 
-/**
- * @author Adegoke Obasa <goke@cottacush.com>
- */
-
 public class PrefsUtils {
 
-    public static final String GLOBAL_SHARED_PREFS = "global_shared_prefs";
+    private static final String GLOBAL_SHARED_PREFS = "global_shared_prefs";
     private Context context;
 
     public PrefsUtils(Context context) {

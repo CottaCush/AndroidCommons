@@ -9,24 +9,18 @@ import java.io.IOException;
 
 import okhttp3.ResponseBody;
 
-/**
- * @author Adegoke Obasa <goke@cottacush.com>
- */
-
 public class HttpResponseUtils {
 
     private JsonElement successBody;
     private JSONObject errorBody;
 
-    public static final String ERROR_MESSAGE = "An unexpected network error occurred.";
+    private static final String ERROR_MESSAGE = "An unexpected network error occurred.";
 
     public HttpResponseUtils(JsonElement successBody, ResponseBody errorBody) {
         this.successBody = successBody;
         if (errorBody != null) {
             try {
-                if (errorBody != null) {
-                    this.errorBody = new JSONObject(errorBody.string());
-                }
+                this.errorBody = new JSONObject(errorBody.string());
             } catch (JSONException | IOException e) {
                 e.printStackTrace();
             }

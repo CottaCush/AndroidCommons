@@ -2,17 +2,19 @@ package com.cottacush.android.libraries.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 
-/**
- * Created by codedentwickler on 10/11/17.
- */
+import com.cottacush.android.libraries.utils.factories.SystemServicesFactory;
 
 public final class NetworkUtils {
-    public static boolean isNetworkConnected(Context context) {
-        ConnectivityManager cm =
-                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+
+    public static boolean isNetworkConnectedOrConnecting(Context context) {
+        ConnectivityManager cm = SystemServicesFactory.connectivityManager(context);
+        return cm != null && cm.getActiveNetworkInfo().isConnectedOrConnecting();
     }
+
+    public static boolean isNetworkConnected(Context context) {
+        ConnectivityManager cm = SystemServicesFactory.connectivityManager(context);
+        return cm != null && cm.getActiveNetworkInfo().isConnected();
+    }
+
 }
